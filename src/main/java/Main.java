@@ -1,4 +1,14 @@
 class Main {
+
+    /*
+    Write a method called printTerminatedThreadName that takes in an
+    array of threads and prints the name of the thread that’s in the TERMINATED state.
+    The input array will only have one thread in the TERMINATED state.
+
+    The output should print out the terminated thread name like this:
+
+    TERMINATED THREAD: Thread 1
+     */
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> System.out.println("Hello from Thread 1"));
         t1.setName("Thread 1");
@@ -27,6 +37,10 @@ class Main {
     }
 
     public static void printNameOfTerminatedThread(Thread[] threads) {
-        
+        for (Thread thread : threads) {
+            if (thread.getState().equals(Thread.State.TERMINATED)) {
+                System.out.println("TERMINATED THREAD: " + thread.getName());
+            }
+        }
     }
 }
